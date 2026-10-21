@@ -837,6 +837,20 @@ html, body { -webkit-font-smoothing: antialiased; min-height: 100%; margin: 0px;
   .ccr-tst footer{margin-top:8px;font-weight:700;color:#283618;font-size:14px}
   .ccr-tst footer span{font-weight:500;color:#76845B}
   [data-faq-answer][hidden]{display:none}
+  .ccr-bar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(250,247,240,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+           border-top:1px solid #D5CCBA;padding:10px 16px;box-shadow:0 -10px 30px rgba(0,0,0,.12);transform:translateY(110%);transition:transform .3s}
+  .ccr-bar.show{transform:none}
+  .ccr-bar .in{max-width:56rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:inherit}
+  .ccr-bar .t{font-size:10px;text-transform:uppercase;font-weight:700;color:#6D7953;letter-spacing:.05em;display:block}
+  .ccr-bar .p{display:flex;align-items:baseline;gap:6px}
+  .ccr-bar .p small{font-size:12px;font-weight:600;color:#283618}
+  .ccr-bar .p b{font-size:18px;font-weight:900;color:#4E5F2B}
+  .ccr-bar a{background:#4E5F2B;color:#FEFAE0;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;padding:11px 22px;border-radius:999px;
+             box-shadow:0 4px 10px rgba(0,0,0,.15);display:flex;align-items:center;gap:6px;flex-shrink:0;text-decoration:none;transition:transform .15s}
+  .ccr-bar a:hover{background:#3C4921;transform:scale(1.05)}
+  .ccr-bar svg{width:14px;height:14px;color:#FCD34D}
+  body{padding-bottom:70px}
+
 </style>
 </head>
 <body class="bg-[#F5F2EB] text-[#2C331B] antialiased selection:bg-[#728247] selection:text-white">
@@ -973,6 +987,15 @@ html, body { -webkit-font-smoothing: antialiased; min-height: 100%; margin: 0px;
 
   // ---------- Imagens: carregamento leve ----------
   [].slice.call(document.images).slice(1).forEach(function(i){ i.loading = "lazy"; });
+})();
+</script>
+
+<aside class="ccr-bar" id="ccrBar" aria-label="Acesso rápido à oferta"><div class="in"><div><span class="t">70 Receitas + 4 Bônus</span><div class="p"><small>por 6x</small><b>R$ 5,66</b></div></div><a href="#oferta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0"></path><path d="M3.103 6.034h17.794"></path><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path></svg><span>Quero as receitas!</span></a></div></aside>
+<script>
+(function(){
+  var bar = document.getElementById("ccrBar");
+  function upd(){ bar.classList.toggle("show", window.scrollY > 500); }
+  window.addEventListener("scroll", upd, {passive:true}); upd();
 })();
 </script>
 </body>
